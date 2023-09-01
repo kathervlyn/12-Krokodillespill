@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrokodilleSpill</title>
+</head>
+
+<body>
+    <div id="points">Poeng: 0</div>
+    <img src="/Images/Krokodille.jpg" alt="Krokodille">
+    <div id="firstNum">1</div>
+    <input type="text" id="input"></input>
+    <div id="secondNum">1</div>
+    <button onclick="submit()">Submit</button>
+    <button onclick="reset()">Reset</button>
+
+    <script>
+        let firstNum = 0;
+        let secondNum = 0;
+        let score = 0;
+        let scoreCounter = document.getElementById('points');
+
+        function reset() {
+            updateNumbers();
+            scoreCounter.innerHTML = 'poeng: 0';
+            score = 0;
+        }
+
+        function updateNumbers() {
+            firstNum = getRandomNumber();
+            secondNum = getRandomNumber();
+            document.getElementById("firstNum").innerHTML = firstNum;
+            document.getElementById("secondNum").innerHTML = secondNum;
+            document.getElementById('input').value = '';
+        }
+
+        function getRandomNumber() {
+            return Math.round(Math.random() * 10) + 1;
+        }
+
+        function submit() {
+            let input = document.getElementById('input').value;
+            if (firstNum > secondNum && input == '>') {
+                score++;
+                scoreCounter.innerHTML = 'Poeng: ' + score;
+                updateNumbers();
+            }
+            else if (firstNum > secondNum && input == '<') {
+                score--;
+                scoreCounter.innerHTML = 'Poeng: ' + score;
+                updateNumbers();
+            }
+            else if (firstNum < secondNum && input == '<') {
+                score++;
+                scoreCounter.innerHTML = 'Poeng: ' + score;
+                updateNumbers();
+            }
+
+            else if (firstNum < secondNum && input == '>') {
+                score--;
+                scoreCounter.innerHTML = 'Poeng: ' + score;
+                updateNumbers();
+            }
+
+            else if (firstNum < secondNum && input == '>') {
+                score--;
+                scoreCounter.innerHTML = 'Poeng: ' + score;
+                updateNumbers();
+            }
+
+            else if (firstNum == secondNum && input == '=') {
+                score++;
+                scoreCounter.innerHTML = 'Poeng: ' + score;
+                updateNumbers();
+            }
+            else {
+                score--;
+                scoreCounter.innerHTML = 'Poeng: ' + score;
+            }
+        }
+    </script>
+</body>
+<style>
+    img {
+        height: 300px;
+        width: 300px;
+    }
+
+    input {
+        width: 150px;
+    }
+</style>
+
+</html>

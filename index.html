@@ -42,6 +42,7 @@
 
         function submit() {
             let input = document.getElementById('input').value;
+            if (input == '') return;
             if (firstNum > secondNum && input == '>') {
                 score++;
                 scoreCounter.innerHTML = 'Poeng: ' + score;
